@@ -1,32 +1,30 @@
-import { Component } from 'react';
-import PropTypes from "prop-types";
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-export class Modal extends Component {     
-    
-    onEscape = (e) => { if (e.key === 'Escape') this.props.hideModal() }  
-    
-    onClick = (e) => { if (e.target === e.currentTarget) this.props.hideModal() } 
+export const Modal = ({ imgUrl, hideModal }) => {
+  const onEscape = e => {
+    if (e.key === 'Escape') hideModal();
+  };
 
-    componentDidMount() {         
-        window.addEventListener("keydown", this.onEscape);   
-    }
+  const onClick = e => {
+    if (e.target === e.currentTarget) hideModal();
+  };
 
-    componentWillUnmount() { 
-        window.removeEventListener("keydown", this.onEscape);
-    }
+  useEffect(() => {
+    window.addEventListener('keydown', onEscape);
+    return () => window.removeEventListener('keydown', onEscape);
+  }, []);
 
-    render() {
-        return (
-            <div className="Overlay" onClick={this.onClick}>
-                <div className="Modal">
-                    <img src={this.props.imgUrl} alt="" />
-                </div>
-            </div>);
-    }
-}
+  return (
+    <div className="Overlay" onClick={onClick}>
+      <div className="Modal">
+        <img src={imgUrl} alt="" />
+      </div>
+    </div>
+  );
+};
 
 Modal.propTypes = {
-    imgUrl: PropTypes.string.isRequired,    
-    hideModal: PropTypes.func.isRequired, 
-}
-    
+  imgUrl: PropTypes.string.isRequired,
+  hideModal: PropTypes.func.isRequired,
+};
