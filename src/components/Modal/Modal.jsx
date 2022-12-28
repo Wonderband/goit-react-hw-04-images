@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import css from './Modal.module.css';
 import PropTypes from 'prop-types';
 
 export const Modal = ({ imgUrl, hideModal }) => {
@@ -16,8 +17,8 @@ export const Modal = ({ imgUrl, hideModal }) => {
   });
 
   return (
-    <div className="Overlay" onClick={onClick}>
-      <div className="Modal">
+    <div className={css.Overlay} onClick={onClick}>
+      <div className={css.Modal}>
         <img src={imgUrl} alt="" />
       </div>
     </div>

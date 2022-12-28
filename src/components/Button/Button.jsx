@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import css from './Button.module.css';
 export const Button = ({ imagesQtt, page, perPage, loadMore }) =>
   imagesQtt > page * perPage && (
-    <button type="button" className="Button" onClick={loadMore}>
+    <button type="button" className={css.Button} onClick={loadMore}>
       Load more
     </button>
   );
