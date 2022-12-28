@@ -8,8 +8,9 @@ import { Modal } from './Modal/Modal';
 import { Loader } from './Loader/Loader';
 
 export const App = () => {
+  const perPage = 15;
   const [searchTerm, setSearchTerm] = useState('');
-  const [perPage, setPerPage] = useState(15);
+  // const [perPage, setPerPage] = useState(15);
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
   const [imgTotalNumber, setImgTotalNumber] = useState(0);

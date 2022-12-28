@@ -13,7 +13,7 @@ export const Modal = ({ imgUrl, hideModal }) => {
   useEffect(() => {
     window.addEventListener('keydown', onEscape);
     return () => window.removeEventListener('keydown', onEscape);
-  }, []);
+  });
 
   return (
     <div className="Overlay" onClick={onClick}>
